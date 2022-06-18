@@ -8,7 +8,7 @@
 PRODUCT_NAME = generate_pdf_invoice_example
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.generatePdfInvoiceExample
+PRODUCT_BUNDLE_IDENTIFIER = com.factura.facil
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2021 com.example. All rights reserved.

@@ -1,4 +1,4 @@
-package com.example.generate_pdf_invoice_example
+package com.factura.facil
 
 import io.flutter.embedding.android.FlutterActivity
 

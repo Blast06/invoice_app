@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.generate_pdf_invoice_example">
+    package="com.factura.facil">
    <application
         android:label="generate_pdf_invoice_example"
         android:icon="@mipmap/ic_launcher">
