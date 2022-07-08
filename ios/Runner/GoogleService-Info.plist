@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>359439722905-knft0b8de9jeahlpslq84o68htq5mbso.apps.googleusercontent.com</string>
+	<string>654508927394-k9l7u176173a6lm52cke0mvl20an74m1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.359439722905-knft0b8de9jeahlpslq84o68htq5mbso</string>
+	<string>com.googleusercontent.apps.654508927394-k9l7u176173a6lm52cke0mvl20an74m1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAMgq_fVcRTy0pjzlXSlhlqUODP-Uash-I</string>
+	<string>AIzaSyA3ecB47KUTTtdzLZA_KIseAZMh1Uoo0uk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>359439722905</string>
+	<string>654508927394</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.namesfor.rpg</string>
+	<string>com.factura.facil</string>
 	<key>PROJECT_ID</key>
-	<string>nicknames-generator</string>
+	<string>cursofirebase-18110</string>
 	<key>STORAGE_BUCKET</key>
-	<string>nicknames-generator.appspot.com</string>
+	<string>cursofirebase-18110.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:359439722905:ios:95d8bf21b38f59397ccb08</string>
+	<string>1:654508927394:ios:23e71d494e059f4fdceafb</string>
+	<key>DATABASE_URL</key>
+	<string>https://cursofirebase-18110.firebaseio.com</string>
 </dict>
 </plist>
