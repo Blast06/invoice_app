@@ -39,4 +39,4 @@
 #           tag: v1.0.${{ github.run_number }}
 #           token: ${{ secrets.TOKEN }}
 
-#gets trigger on pull request or push to master/main branch
+# #gets trigger on pull request or push to master/main branch
