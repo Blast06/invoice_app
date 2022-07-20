@@ -14,8 +14,7 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-      - name: pod Install
-        run: pod install
+     
 
       - name: Install the Apple certificate and provisioning profile
         env:
@@ -66,6 +65,8 @@ jobs:
 
       - name: Restore packages
         run: flutter pub get
+      - name: pod Install
+        run: pod install
 
       - name: Build Flutter
         run: flutter build ios --release --no-codesign
