@@ -65,8 +65,8 @@ jobs:
 
       - name: Restore packages
         run: flutter pub get
-      - name: pod Install
-        run: pod install
+      # - name: pod Install
+      #   run: pod install
 
       - name: Build Flutter
         run: flutter build ios --release --no-codesign
