@@ -2,12 +2,13 @@ import 'package:get/get_navigation/get_navigation.dart';
 
 class MyTransalations extends Translations {
   @override
-  // TODO: implement keys
+
   Map<String, Map<String, String>> get keys => {
         'en': {
           'start_text': 'RPG',
           'start_text_btn': 'START',
           'title': 'Names for RPG',
+          'INVOICE_PAGE_TITLE':'Invoice Data',
           'names_page': 'Names for RPG',
           'bottom_bar_home': 'Home',
           'bottom_bar_privacy': 'Privacy Policy',
@@ -35,6 +36,7 @@ class MyTransalations extends Translations {
         },
         'es': {
           'start_text': 'RPG',
+          'INVOICE_PAGE_TITLE':'Datos Factura',
           'title': 'Nombres para RPGs',
           'start_text_btn': 'INICIAR',
           'names_page': 'Nombres para RPG',

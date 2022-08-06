@@ -65,6 +65,7 @@ class PdfInvoiceApi {
         ],
       );
 
+//TODO implement parametters to make this customize
   static Widget buildInvoiceInfo(InvoiceInfo info) {
     final paymentTerms = '${info.dueDate.difference(info.date).inDays} days';
     final titles = <String>[

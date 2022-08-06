@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:generate_pdf_invoice_example/bindings/FormBindings.dart';
 import 'package:generate_pdf_invoice_example/page/pdf_page.dart';
 import 'package:generate_pdf_invoice_example/page/splash_page.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'MyPages.dart';
 import 'Translations.dart';
 import 'controllers/AdmobController.dart';
+import 'page/invoice_info_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,5 +55,9 @@ class MyApp extends StatelessWidget {
         translations: MyTransalations(),
         theme: ThemeData(primarySwatch: Colors.deepOrange),
         home: SplashPage(),
+        getPages: [
+           GetPage(name: Routes.SPLASH, page:()=> SplashPage(),),
+           GetPage(name: Routes.INVOICE_FORM, page:()=> InvoiceInfoPage(), binding: FormBinding()),
+        ],
       );
 }
