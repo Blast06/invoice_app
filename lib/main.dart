@@ -45,7 +45,7 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'Invoicee';
+  static final String title = 'Invoice';
 
   @override
   Widget build(BuildContext context) => GetMaterialApp(

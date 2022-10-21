@@ -9,5 +9,6 @@
     static const SPLASH = '/splash';
     static const HOME = '/home';
     static const INVOICE_FORM = '/create_invoice_form';
+    static const FORM_SCREEN = '/form_screen';
     
   }

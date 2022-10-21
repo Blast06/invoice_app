@@ -69,7 +69,7 @@ class PdfInvoiceApi {
   static Widget buildInvoiceInfo(InvoiceInfo info) {
     final paymentTerms = '${info.dueDate.difference(info.date).inDays} days';
     final titles = <String>[
-      'Invoice Number:',
+      'Invoice Number:', //TODO: TRANSLATE THIS
       'Invoice Date:',
       'Payment Terms:',
       'Due Date:'
@@ -105,7 +105,7 @@ class PdfInvoiceApi {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'INVOICE',
+            'INVOICE', //TODO: TRANSLATE THIS
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 0.8 * PdfPageFormat.cm),
@@ -116,7 +116,7 @@ class PdfInvoiceApi {
 
   static Widget buildInvoice(Invoice invoice) {
     final headers = [
-      'Description',
+      'Description', //TODO: TRANSLATE THIS
       'Date',
       'Quantity',
       'Unit Price',
@@ -173,7 +173,7 @@ class PdfInvoiceApi {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 buildText(
-                  title: 'Net total',
+                  title: 'Net total', //TODO: TRANSLATE THIS
                   value: Utils.formatPrice(netTotal),
                   unite: true,
                 ),

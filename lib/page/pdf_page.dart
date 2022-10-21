@@ -32,8 +32,9 @@ class _PdfPageState extends State<PdfPage> {
                   text: 'Generate Invoice',
                 ),
                 const SizedBox(height: 48),
-                ButtonWidget(
-                  text: 'Invoice PDF',
+                ButtonWidget( //TODO: Analyze this to see how to fill this information, the whole process of calling the methods to build 
+                              //the invoice is here. 
+                  text: 'Invoice PDF',//TODO: TRANSLATE THIS
                   onClicked: () async {
                     final date = DateTime.now();
                     final dueDate = date.add(Duration(days: 7));

@@ -23,7 +23,7 @@ class SplashController extends GetxController {
 
     await Future.delayed(Duration(seconds: 5), () {
       admob.showAdIfAvailable();
-      Get.offAndToNamed(Routes.INVOICE_FORM);
+      Get.offAndToNamed(Routes.FORM_SCREEN);
     });
   }
 
