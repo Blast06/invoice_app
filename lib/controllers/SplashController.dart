@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:generate_pdf_invoice_example/AppOpenAdManager.dart';
 import 'package:generate_pdf_invoice_example/MyPages.dart';
+import 'package:generate_pdf_invoice_example/page/form_screen.dart';
 import 'package:generate_pdf_invoice_example/page/invoice_info_page.dart';
 
 import 'package:get/get.dart';
@@ -22,8 +23,9 @@ class SplashController extends GetxController {
     // await admob.loadAd();
 
     await Future.delayed(Duration(seconds: 5), () {
-      admob.showAdIfAvailable();
-      Get.offAndToNamed(Routes.FORM_SCREEN);
+      // admob.showAdIfAvailable();
+      // Get.offAndToNamed(Routes.FORM_SCREEN);
+      Get.offAll(FormScreen());
     });
   }
 

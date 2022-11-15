@@ -11,8 +11,8 @@ part './routes.dart';
 abstract class AppPages {
 
   static final pages = [
-    GetPage(name: Routes.SPLASH, page:()=> InvoiceInfoPage(),),
-    GetPage(name: Routes.INVOICE_FORM, page:()=> SplashPage(),), //TODO: Change to correct page
+    GetPage(name: Routes.SPLASH, page:()=> SplashPage(),),
+    GetPage(name: Routes.INVOICE_FORM, page:()=> InvoiceInfoPage(),),
     GetPage(name: Routes.FORM_SCREEN, page:()=> FormScreen(),),
     
   ];

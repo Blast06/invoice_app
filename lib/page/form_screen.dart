@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:logger/logger.dart';
 
 import '../constants.dart';
+import '../model/invoice.dart';
 import '../pdf_logic.dart';
 import 'settings_page.dart';
 
@@ -24,11 +26,13 @@ class _FormScreenState extends State<FormScreen> {
   String totalPaid = '';
   int? totalExpected;
 
+  // List<String> itemNames = [];
   List<String> itemNames = [];
   List<int> fees = [];
   String todayDate = '';
   int? totalPaidAsInt;
   int? outstanding;
+  Logger logger = Logger();
 
   @override
   void dispose() {
@@ -139,7 +143,7 @@ class _FormScreenState extends State<FormScreen> {
             ));
 
         setState(() {
-          //agregar 
+          //agregar
           _itemControllers.add(itemController);
           _feeControllers.add(feeController);
           _itemAndRowFields.add(fields);
@@ -289,7 +293,9 @@ class _FormScreenState extends State<FormScreen> {
           Center(
             child: MaterialButton(
               onPressed: () {
-                if (_customerName.text.isEmpty) {
+                if (itemNames.length < 1) {
+                  showInSnackBar(context, "Please add items");
+                } else if (_customerName.text.isEmpty) {
                   showInSnackBar(
                       context, 'Please enter in the Customer\'s Name.');
                 } else if (_totalPaid.text.isEmpty) {
@@ -315,10 +321,12 @@ class _FormScreenState extends State<FormScreen> {
                 _feeControllers
                     .where((element) => element.text != '')
                     .forEach((element) {
-                  fees.add(int.parse(element.text));
+                  logger.v("FEES COUNTING...");
+                  logger.v(int.parse(element.text));
+                  fees.add(int.parse(element.text) + 1);
 
                   totalPaidAsInt = int.parse(totalPaid);
-                  // sums up the fees expected to be paid
+                  // sums up the fees expected to be paid TODO: Add validation when its in blank
                   totalExpected = fees.fold(
                       0, (previousValue, current) => previousValue! + current);
                   outstanding = totalExpected! - totalPaidAsInt!;
@@ -328,12 +336,22 @@ class _FormScreenState extends State<FormScreen> {
                   if (totalPaidAsInt! > totalExpected!) {
                     showInSnackBar(context,
                         'Total Expected cannot be higher than Total Paid.');
+                    logger.v(
+                        "total totalpaid => ${totalPaidAsInt} - total expected => $totalExpected");
                   } else if (itemNames.length > fees.length) {
                     showInSnackBar(context, 'Please fill in the missing fee.');
+                    logger.v(
+                        " itemNames: ${itemNames.length} - FEES: ${fees.length}");
+
+                    logger.v(fees);
                   } else if (itemNames.length < fees.length) {
                     showInSnackBar(
                         context, 'Please fill in the missing item name.');
+                    logger.v(
+                        " itemNames: ${itemNames.length} - FEES: ${fees.length}");
                   } else {
+                    logger.v(
+                        "total totalpaid => ${totalPaidAsInt} - total expected => $totalExpected");
                     PDFLogic pdf = PDFLogic(
                       customerName: customerName,
                       todayDate: todayDate,
@@ -343,7 +361,86 @@ class _FormScreenState extends State<FormScreen> {
                       totalPaid: _totalPaid.text,
                       outstanding: outstanding!,
                     );
-                    pdf.generateInvoice();
+                    logger.i("HERE GOES THE PDF");
+                    logger.v("${pdf.customerName}");
+                    logger.v("${pdf.fees}");
+                    logger.v("${pdf.itemNames}");
+                    logger.v("${pdf.todayDate}");
+                    logger.v("PRUEBA");
+                    // pdf.generateInvoice();
+                    //send the data from here...
+
+                    // final invoice = Invoice(
+                    //   supplier: Supplier(
+                    //     name: 'Sarah Field',
+                    //     address: 'Sarah Street 9, Beijing, China',
+                    //     paymentInfo: 'https://paypal.me/sarahfieldzz',
+                    //   ),
+                    //   customer: Customer(
+                    //     name: 'Apple Inc.',
+                    //     address: 'Apple Street, Cupertino, CA 95014',
+                    //   ),
+                    //   info: InvoiceInfo(
+                    //     date: date,
+                    //     dueDate: dueDate,
+                    //     description: 'My description...',
+                    //     number: '${DateTime.now().year}-9999',
+                    //   ),
+                    //   items: [
+                    //     InvoiceItem(
+                    //       description: 'Coffee',
+                    //       date: DateTime.now(),
+                    //       quantity: 3,
+                    //       vat: 0.19,
+                    //       unitPrice: 5.99,
+                    //     ),
+                    //     InvoiceItem(
+                    //       description: 'Water',
+                    //       date: DateTime.now(),
+                    //       quantity: 8,
+                    //       vat: 0.19,
+                    //       unitPrice: 0.99,
+                    //     ),
+                    //     InvoiceItem(
+                    //       description: 'Orange',
+                    //       date: DateTime.now(),
+                    //       quantity: 3,
+                    //       vat: 0.19,
+                    //       unitPrice: 2.99,
+                    //     ),
+                    //     InvoiceItem(
+                    //       description: 'Apple',
+                    //       date: DateTime.now(),
+                    //       quantity: 8,
+                    //       vat: 0.19,
+                    //       unitPrice: 3.99,
+                    //     ),
+                    //     InvoiceItem(
+                    //       description: 'Mango',
+                    //       date: DateTime.now(),
+                    //       quantity: 1,
+                    //       vat: 0.19,
+                    //       unitPrice: 1.59,
+                    //     ),
+                    //     InvoiceItem(
+                    //       description: 'Blue Berries',
+                    //       date: DateTime.now(),
+                    //       quantity: 5,
+                    //       vat: 0.19,
+                    //       unitPrice: 0.99,
+                    //     ),
+                    //     InvoiceItem(
+                    //       description: 'Lemon',
+                    //       date: DateTime.now(),
+                    //       quantity: 4,
+                    //       vat: 0.19,
+                    //       unitPrice: 1.29,
+                    //     ),
+                    //   ],
+                    // );
+                    // final pdfFile = await PdfInvoiceApi.generate(invoice);
+
+                    // PdfApi.openFile(pdfFile);
                   }
                 });
               },
@@ -365,3 +462,8 @@ class _FormScreenState extends State<FormScreen> {
     );
   }
 }
+
+// TODO: FIND CONNECTION WHERE INFO IS SENT TO CONTROLLERS
+// TODO: SEND DATA TO THE CONNECTION OF THE OTHER PDF LOGIC
+// TODO FIND WHERE AND HOW FIELDS ARE ADDED
+// TODO: CUSTOMIZE FIELDS, ADD AUTOMATIC TOTALS
