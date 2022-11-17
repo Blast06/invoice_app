@@ -23,7 +23,7 @@ class _FormScreenState extends State<FormScreen> {
   final TextEditingController _customerName = TextEditingController();
   String customerName = '';
   final TextEditingController _totalPaid = TextEditingController();
-  String totalPaid = '';
+  String totalPaid = '0';
   int? totalExpected;
 
   // List<String> itemNames = [];
@@ -279,6 +279,8 @@ class _FormScreenState extends State<FormScreen> {
                   ),
                   onChanged: (value) {
                     totalPaid = value;
+
+                    logger.i("Total paid => " + totalPaid);
                   },
                 ),
               ),
@@ -293,12 +295,14 @@ class _FormScreenState extends State<FormScreen> {
           Center(
             child: MaterialButton(
               onPressed: () {
-                if (itemNames.length < 1) {
-                  showInSnackBar(context, "Please add items");
-                } else if (_customerName.text.isEmpty) {
+                logger.v("total paid field: " + _totalPaid.text);
+
+                if (_customerName.text.isEmpty) {
                   showInSnackBar(
                       context, 'Please enter in the Customer\'s Name.');
-                } else if (_totalPaid.text.isEmpty) {
+                } else if (itemNames.length < 1) {
+                  showInSnackBar(context, "Please add items");
+                } else if (totalPaid == '0') {
                   showInSnackBar(context, 'Please enter the total paid.');
                 } else {
                   // makes sure the lists are empty before adding new values.
