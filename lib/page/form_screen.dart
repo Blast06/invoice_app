@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:logger/logger.dart';
 
+import '../api/pdf_api.dart';
+import '../api/pdf_invoice_api.dart';
 import '../constants.dart';
 import '../model/invoice.dart';
 import '../pdf_logic.dart';
@@ -27,10 +29,10 @@ class _FormScreenState extends State<FormScreen> {
   int? totalExpected;
 
   // List<String> itemNames = [];
-  List<String> itemNames = [];
+  List<InvoiceItem> itemNames = [];
   List<int> fees = [];
   String todayDate = '';
-  int? totalPaidAsInt;
+  int? totalPaidAsInt = 0;
   int? outstanding;
   Logger logger = Logger();
 
@@ -123,6 +125,9 @@ class _FormScreenState extends State<FormScreen> {
                           ),
                           border: InputBorder.none,
                         ),
+                        onChanged: (value) {
+                          
+                        },
                       ),
                     ),
                   ),
@@ -317,7 +322,15 @@ class _FormScreenState extends State<FormScreen> {
                 _itemControllers
                     .where((element) => element.text != '')
                     .forEach((element) {
-                  itemNames.add(element.text);
+                  itemNames = [
+                    InvoiceItem(
+                      description: element.text,
+                      date: DateTime.now(),
+                      quantity: 3, //TODO: ADD QUANTITY
+                      vat: 0.19, //TODO: ADD VAT
+                      unitPrice: 5.99, //TODO: ADD price
+                    ),
+                  ];
                 });
 
                 // converts content of non-empty text fields for fees to ints
@@ -329,7 +342,7 @@ class _FormScreenState extends State<FormScreen> {
                   logger.v(int.parse(element.text));
                   fees.add(int.parse(element.text) + 1);
 
-                  totalPaidAsInt = int.parse(totalPaid);
+                  totalPaidAsInt = int.parse(this.totalPaid);
                   // sums up the fees expected to be paid TODO: Add validation when its in blank
                   totalExpected = fees.fold(
                       0, (previousValue, current) => previousValue! + current);
@@ -368,9 +381,22 @@ class _FormScreenState extends State<FormScreen> {
                     logger.i("HERE GOES THE PDF");
                     logger.v("${pdf.customerName}");
                     logger.v("${pdf.fees}");
-                    logger.v("${pdf.itemNames}");
+                    logger.v("prueba de instancia => ${pdf.itemNames}");
                     logger.v("${pdf.todayDate}");
                     logger.v("PRUEBA");
+
+                    //TODO: Create dialog form for:
+                    // supplier, customer and invoice info
+                    //items: [
+                    //     InvoiceItem(
+                    //       description: 'Coffee',
+                    //       date: DateTime.now(),
+                    //       quantity: 3,
+                    //       vat: 0.19,
+                    //       unitPrice: 5.99,
+                    //     ),
+
+                    //HERE IS WHERE THE PDF API COMES IN
                     // pdf.generateInvoice();
                     //send the data from here...
 
