@@ -31,10 +31,10 @@ class _FormScreenState extends State<FormScreen> {
   int? totalExpected;
 
   // List<String> itemNames = [];
-  List<String> itemNames = [];
+  List<InvoiceItem> itemNames = [];
   List<int> fees = [];
   String todayDate = '';
-  int? totalPaidAsInt;
+  int? totalPaidAsInt = 0;
   int? outstanding;
   Logger logger = Logger();
 
@@ -127,6 +127,9 @@ class _FormScreenState extends State<FormScreen> {
                           ),
                           border: InputBorder.none,
                         ),
+                        onChanged: (value) {
+                          
+                        },
                       ),
                     ),
                   ),
@@ -322,7 +325,15 @@ class _FormScreenState extends State<FormScreen> {
                 _itemControllers
                     .where((element) => element.text != '')
                     .forEach((element) {
-                  itemNames.add(element.text);
+                  itemNames = [
+                    InvoiceItem(
+                      description: element.text,
+                      date: DateTime.now(),
+                      quantity: 3, //TODO: ADD QUANTITY
+                      vat: 0.19, //TODO: ADD VAT
+                      unitPrice: 5.99, //TODO: ADD price
+                    ),
+                  ];
                 });
 
                 // converts content of non-empty text fields for fees to ints
@@ -334,7 +345,7 @@ class _FormScreenState extends State<FormScreen> {
                   logger.v(int.parse(element.text));
                   fees.add(int.parse(element.text) + 1);
 
-                  totalPaidAsInt = int.parse(totalPaid);
+                  totalPaidAsInt = int.parse(this.totalPaid);
                   // sums up the fees expected to be paid TODO: Add validation when its in blank
                   totalExpected = fees.fold(
                       0, (previousValue, current) => previousValue! + current);
@@ -368,7 +379,12 @@ class _FormScreenState extends State<FormScreen> {
                       totalPaid: _totalPaid.text,
                       outstanding: outstanding!,
                     );
-                   
+                    logger.i("HERE GOES THE PDF");
+                    logger.v("${pdf.customerName}");
+                    logger.v("${pdf.fees}");
+                    logger.v("${pdf.itemNames}");
+                    logger.v("${pdf.todayDate}");
+                    logger.v("PRUEBA");
                     // pdf.generateInvoice();
                     //send the data from here...
 
