@@ -61,3 +61,9 @@ class MyApp extends StatelessWidget {
         ],
       );
 }
+
+//TODO:
+//when adding just one item it throws the error "please add items"
+
+// verify when pressing generate invoice if total sum let's say is 110(item1 of 60 and item2 of 50) it throws the error "total expected can not be higher than
+//total paid even if total sum its the same amount, it still throws the error or if it's higher

@@ -46,6 +46,8 @@
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-################~##########</string>
+	<string>ca-app-pub-4473546092325949~3870664228</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

@@ -29,7 +29,7 @@ class _PdfPageState extends State<PdfPage> {
               children: <Widget>[
                 TitleWidget(
                   icon: Icons.picture_as_pdf,
-                  text: 'Generate Invoice',
+                  text: 'Generate Invoice2',
                 ),
                 const SizedBox(height: 48),
                 ButtonWidget( //TODO: Analyze this to see how to fill this information, the whole process of calling the methods to build 

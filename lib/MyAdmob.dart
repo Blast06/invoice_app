@@ -31,7 +31,7 @@ class MyAdmob {
 
   //PROD
   static final String PROD_app_id_ios =
-      'ca-app-pub-4473546092325949~9911613722';
+      'ca-app-pub-4473546092325949~3870664228';
   static final String PROD_app_id_android =
       'ca-app-pub-4473546092325949~9494409811';
   static final String PROD_banner_id_ios =
@@ -49,7 +49,7 @@ class MyAdmob {
   static final String PROD_open_ad_id_android =
       'ca-app-pub-4473546092325949/7096063917';
   static final String PROD_open_ad_id_ios =
-      'ca-app-pub-4473546092325949/8948201639';
+      'ca-app-pub-4473546092325949/3084992327';
 
   static String getAppName() {
     if (Platform.isAndroid) {
